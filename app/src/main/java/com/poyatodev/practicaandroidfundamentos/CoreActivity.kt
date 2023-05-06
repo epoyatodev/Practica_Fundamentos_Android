@@ -55,6 +55,7 @@ class CoreActivity : AppCompatActivity() {
 
                     }
                     is  CoreViewModel.UiStateCA.OnHeroIsDead -> {
+
                         addHeroesListFragment()
                         binding.tvTitle.text = getString(R.string.lista_heroes_titulo)
                     }

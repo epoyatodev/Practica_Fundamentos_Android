@@ -102,6 +102,7 @@ class CoreViewModel: ViewModel() {
 
                 _uiStateCA.value = UiStateCA.OnHeroIsDead
 
+
             }else{
                 _uiStateCA.value = UiStateCA.OnHeroeHPChange
 

@@ -39,7 +39,7 @@ class FightFragment : Fragment() {
                 Picasso.get().load(coreViewModel.selectedHeroe.photo).into(binding.imageHeroeFight)
                 binding.progressBarFight.max = coreViewModel.selectedHeroe.totalHitPoints
                 binding.progressBarFight.progress = coreViewModel.selectedHeroe.currentHitPoints
-                binding.numberProgress.text = coreViewModel.selectedHeroe.currentHitPoints.toString()
+                binding.numberProgress.text = "${coreViewModel.selectedHeroe.currentHitPoints}%"
 
 
             }
