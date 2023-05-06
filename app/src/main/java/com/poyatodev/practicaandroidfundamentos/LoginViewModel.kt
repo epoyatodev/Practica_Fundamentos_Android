@@ -19,7 +19,7 @@ class LoginViewModel() : ViewModel(){
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Started(true))
     val uiState: StateFlow<UiState> = _uiState
-    var token: String  = "" //TODO poner private
+    var token: String  = ""
 
     fun tryLogin(email: String, pass: String){
         viewModelScope.launch(Dispatchers.IO) {
@@ -39,7 +39,7 @@ class LoginViewModel() : ViewModel(){
             response.body?.let { responseBody ->
                 token = responseBody.string()
                 Log.w("TAG", "El token obtenido en el viewmodel es $token")
-                _uiState.value = UiState.OnLoginCompleted(token)
+                _uiState.value = UiState.LoginOK(token)
             } ?: run { Log.w("TAG", "Error detected")}
         }
     }
@@ -48,7 +48,7 @@ class LoginViewModel() : ViewModel(){
         data class Started(val started: Boolean) : UiState()
         object Ended : UiState()
         data class Error(val error: String): UiState()
-        data class OnLoginCompleted(val token: String) : UiState()
+        data class LoginOK(val token: String) : UiState()
 
     }
 

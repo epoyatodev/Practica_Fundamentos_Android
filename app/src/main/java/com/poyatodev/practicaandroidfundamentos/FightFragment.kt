@@ -12,8 +12,6 @@ import com.poyatodev.practicaandroidfundamentos.databinding.FragmentFightBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -21,14 +19,10 @@ private const val ARG_PARAM2 = "param2"
 class FightFragment : Fragment() {
 
     private lateinit var binding: FragmentFightBinding
-    val fightViewModel: FightViewModel by viewModels()
     val coreViewModel: CoreViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
     }
 
     override fun onCreateView(
@@ -41,15 +35,11 @@ class FightFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             coreViewModel.uiState.collect{
-                //TODO Preguntar por que eso funciona
-                //  binding.tvFigterName.text = (it as CoreViewModel.UiStateCA.OnHeroeSelectedToFight).heroe.name
                 binding.textViewNameHeroeFight.text = coreViewModel.selectedHeroe.name
                 Picasso.get().load(coreViewModel.selectedHeroe.photo).into(binding.imageHeroeFight)
                 binding.progressBarFight.max = coreViewModel.selectedHeroe.totalHitPoints
                 binding.progressBarFight.progress = coreViewModel.selectedHeroe.currentHitPoints
                 binding.numberProgress.text = coreViewModel.selectedHeroe.currentHitPoints.toString()
-
-
 
 
             }

@@ -72,17 +72,11 @@ class CoreViewModel: ViewModel() {
                 else -> healValue= 20
             }
         }
-        //  selectedHeroe.currentHitPoints += healValue
         return healValue
     }
 
     private fun damageHeroe():Int{
         val damage = Random.nextInt(-60,-10)
-        /*
-                selectedHeroe.let {
-                    selectedHeroe.currentHitPoints = selectedHeroe.currentHitPoints - damage
-                    if (selectedHeroe.currentHitPoints <= 0) selectedHeroe.isDead = true
-                }*/
         return damage
     }
 

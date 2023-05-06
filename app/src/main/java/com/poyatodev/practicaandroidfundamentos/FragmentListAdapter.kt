@@ -13,7 +13,6 @@ interface onClickGridItem{
 }
 
 class FragmentListAdapter(
-    //TODO proably i should add viewmodel.heroesList
     private val heroesList: List<Heroe>,
     private val callback : onClickGridItem
 ): RecyclerView.Adapter<FragmentListAdapter.HeroesListFragmentViewHolder>() {

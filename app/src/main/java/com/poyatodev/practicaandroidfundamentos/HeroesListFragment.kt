@@ -18,7 +18,6 @@ import kotlinx.coroutines.launch
 class HeroesListFragment : Fragment(),onClickGridItem {
 
     private lateinit var binding: FragmentHeroesListBinding
-    val heroesListViewModel: HeroesListViewModel by viewModels()
     val coreViewModel: CoreViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,19 +34,14 @@ class HeroesListFragment : Fragment(),onClickGridItem {
         setFloatingHealAllHeroesButton()
 
         val adapter = FragmentListAdapter(coreViewModel.heroesList,this)
-        // binding.rvHeroesList.layoutManager = LinearLayoutManager(binding.rvHeroesList.context)
         binding.rvHeroesList.layoutManager = GridLayoutManager(binding.rvHeroesList.context,2)
         binding.rvHeroesList.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch{
             coreViewModel.uiState.collect{
-                //TODO add the listVIewRefreshermethod in here
                 adapter.notifyDataSetChanged()
             }
         }
-
-
-
 
         return binding.root
     }

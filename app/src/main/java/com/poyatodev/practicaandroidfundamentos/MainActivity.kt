@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 when (it){
                     is LoginViewModel.UiState.Started ->  Log.w("TAG", "Started")
                     is LoginViewModel.UiState.Ended -> Log.w("TAG", "Ended")
-                    is LoginViewModel.UiState.OnLoginCompleted -> CoreActivity.launch(binding.saveButton.context, viewModel.token)
+                    is LoginViewModel.UiState.LoginOK -> CoreActivity.launch(binding.saveButton.context, viewModel.token)
                     is LoginViewModel.UiState.Error -> Log.w("TAG", "Error en UiState")
 
                 }
@@ -38,13 +38,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //SetUserInterface
     private fun setUserInterface(){
         loadDataFromPreferences()
         setActionMethod()
     }
 
-    //Button on Click
+
     private fun setActionMethod(){
 
         binding.saveButton.setOnClickListener {
@@ -70,8 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //SharedPreferences related Methods
-//Save in saveInPreferences
+
     private fun saveDataInPreferences(mail: String, pass: String){
         getPreferences(Context.MODE_PRIVATE).edit().apply {
             putString(TAG_EMAIL, mail).apply()
@@ -79,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-    //Retrieve
+
     private fun loadDataFromPreferences(){
         getPreferences(Context.MODE_PRIVATE).apply {
             binding.tfEmail.setText(getString(TAG_EMAIL,""))

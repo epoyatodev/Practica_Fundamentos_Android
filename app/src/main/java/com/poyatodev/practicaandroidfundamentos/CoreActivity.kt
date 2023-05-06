@@ -73,13 +73,13 @@ class CoreActivity : AppCompatActivity() {
     private fun addHeroesListFragment(){
         supportFragmentManager
             .beginTransaction()
-            .replace(binding.fFragment.id,HeroesListFragment()) //TODO pass context in here if needed
+            .replace(binding.fFragment.id,HeroesListFragment())
             .commitNow()
     }
     private fun addFragmentTwo(){
         supportFragmentManager
             .beginTransaction()
-            .replace(binding.fFragment.id,FightFragment()) //TODO pass context in here if needed
+            .replace(binding.fFragment.id,FightFragment())
             .commitNow()
     }
 
